@@ -1,1 +1,520 @@
-bannu akkabattula
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StellaCare Hospital — Responsive Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#0066cc;
+      --accent-2:#1abc9c;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.06);
+      --card-glow: rgba(32,138,255,0.12);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial; background: linear-gradient(180deg,#f6fbff 0%, #ffffff 60%); color:#0f1724}
+
+    /* NAV */
+    .navbar{backdrop-filter: blur(6px); background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35)); box-shadow:0 6px 18px rgba(11,50,80,0.06); border-radius:12px}
+    .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+
+    /* HERO */
+    .hero{padding:5rem 0; position:relative; overflow:hidden}
+    .hero .glass-card{background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4)); border-radius:20px; padding:2rem; box-shadow:0 10px 30px rgba(16,24,40,0.06);}
+    .stat{background:linear-gradient(90deg,#fff,#f9fbff); border-radius:16px; padding:1rem 1.2rem; box-shadow:0 8px 20px rgba(9,30,63,0.04)}
+
+    /* SERVICES */
+    .service-card{border-radius:16px; padding:1.2rem; transition:transform .28s ease, box-shadow .28s ease; background:#fff}
+    .service-card:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(17,24,39,0.06)}
+
+    /* DOCTORS */
+    .doc-card{border-radius:16px; overflow:hidden; transition:transform .24s ease;}
+    .doc-card img{aspect-ratio:1/1; object-fit:cover}
+    .doc-card:hover{transform:translateY(-6px)}
+
+    /* ABOUT / CTA */
+    .cta{background: linear-gradient(90deg, rgba(0,102,204,0.06), rgba(26,188,156,0.04)); border-radius:18px; padding:2rem}
+
+    /* FOOTER */
+    footer{padding:3rem 0 2rem}
+
+    /* FLOATING */
+    .fab{position:fixed;right:20px;bottom:24px;border-radius:999px;padding:14px 18px;box-shadow:0 12px 30px rgba(22,54,99,0.12);z-index:999}
+
+    /* RESPONSIVE tweaks */
+    @media (max-width:767px){.hero{padding:3rem 0}}
+
+    /* Subtle animated SVG background */
+    .wave{position:absolute;right:-10%;top:-10%;opacity:.06;transform:rotate(12deg);}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .pill{padding:.35rem .65rem;border-radius:999px;background:linear-gradient(90deg,#fff,#f4fbff);display:inline-block;font-weight:600}
+
+    /* simple counters */
+    .counter{font-weight:800;font-size:1.6rem;color:var(--accent)}
+
+  </style>
+</head>
+<body>
+
+<header class="container py-4">
+  <nav class="navbar navbar-expand-lg p-3">
+    <div class="container-fluid">
+      <a class="d-flex gap-2 align-items-center text-decoration-none" href="#">
+        <div class="brand-mark">S</div>
+        <div class="d-none d-sm-block">
+          <div style="font-weight:700">StellaCare</div>
+          <small class="muted">Comprehensive Care & Wellness</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-3 d-none d-lg-block"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">Book Appointment</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero row align-items-center">
+    <div class="col-lg-7">
+      <div class="glass-card">
+        <h1 class="display-6 mb-3">World-class care, close to home</h1>
+        <p class="muted mb-4">At StellaCare Hospital we combine cutting-edge medicine with compassionate staff to bring you personalised treatment plans across specialties.</p>
+
+        <div class="d-flex gap-3 flex-wrap mb-4">
+          <div class="stat">
+            <div class="muted">Patients treated</div>
+            <div class="counter" data-target="12540">0</div>
+          </div>
+          <div class="stat">
+            <div class="muted">Qualified doctors</div>
+            <div class="counter" data-target="240">0</div>
+          </div>
+          <div class="stat">
+            <div class="muted">Years experience</div>
+            <div class="counter" data-target="18">0</div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#appointmentModal">Book Appointment</a>
+          <a class="btn btn-outline-secondary btn-lg" href="#departments">Our Departments</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5 d-none d-lg-block position-relative">
+      <div class="card p-0 doc-card" style="border-radius:20px;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1542736667-069246bdbc74?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hospital" style="height:420px;object-fit:cover;">
+        <div class="p-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div style="font-weight:700">Emergency Care</div>
+              <small class="muted">24/7 service · advanced trauma unit</small>
+            </div>
+            <div class="pill">Open now</div>
+          </div>
+        </div>
+      </div>
+      <svg class="wave" width="420" height="360" viewBox="0 0 600 520" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 200C70 140 160 100 260 120C360 140 420 220 520 220C600 220 600 520 600 520H0V200Z" fill="#0077ff"/></svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 style="font-weight:700">Our Services</h2>
+        <p class="muted mb-0">A wide range of medical services and specialists.</p>
+      </div>
+      <div class="d-none d-md-block">
+        <a href="#departments" class="text-decoration-none muted">View all departments <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="bg-light rounded-3 p-3"><i class="bi bi-heart-pulse fs-3 text-primary"></i></div>
+            <div>
+              <div style="font-weight:700">Cardiology</div>
+              <small class="muted">Heart clinic · ECG · Surgery</small>
+            </div>
+          </div>
+          <p class="muted">Comprehensive cardiac diagnostics & interventional cardiology services.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="bg-light rounded-3 p-3"><i class="bi bi-brain fs-3 text-primary"></i></div>
+            <div>
+              <div style="font-weight:700">Neurology</div>
+              <small class="muted">Stroke care · neurosurgery</small>
+            </div>
+          </div>
+          <p class="muted">Advanced neuro-diagnostic labs and minimally invasive procedures.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="bg-light rounded-3 p-3"><i class="bi bi-bandaid fs-3 text-primary"></i></div>
+            <div>
+              <div style="font-weight:700">Orthopaedics</div>
+              <small class="muted">Joint care · sports injury</small>
+            </div>
+          </div>
+          <p class="muted">State-of-the-art joint reconstruction & fast-track physiotherapy programs.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card p-3 h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="bg-light rounded-3 p-3"><i class="bi bi-x-ray fs-3 text-primary"></i></div>
+            <div>
+              <div style="font-weight:700">Radiology</div>
+              <small class="muted">MRI · CT · Ultrasound</small>
+            </div>
+          </div>
+          <p class="muted">Rapid imaging with AI-assisted reporting for faster diagnoses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section id="departments" class="py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h3 style="font-weight:700">Specialised Departments</h3>
+        <p class="muted">From pediatrics to oncology — integrated care pathways and multidisciplinary teams.</p>
+
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="card p-3" style="border-radius:12px">
+              <div style="font-weight:700">Pediatrics</div>
+              <small class="muted">Child health & immunizations</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3" style="border-radius:12px">
+              <div style="font-weight:700">Oncology</div>
+              <small class="muted">Chemotherapy · Radiotherapy</small>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="card p-3" style="border-radius:12px">
+              <div style="font-weight:700">Gynaecology</div>
+              <small class="muted">Maternity & Reproductive health</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3" style="border-radius:12px">
+              <div style="font-weight:700">ENT</div>
+              <small class="muted">Ear, Nose & Throat</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="cta">
+          <h5 style="font-weight:700">Virtual Tour & Teleconsultation</h5>
+          <p class="muted">Take a virtual walk-through of our facilities or schedule a video consultation with a specialist.</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary">Start Virtual Tour</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">Teleconsult</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section id="doctors" class="py-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 style="font-weight:700">Meet Our Doctors</h3>
+      <small class="muted">Experienced & caring professionals</small>
+    </div>
+
+    <div class="row g-3">
+      <!-- Doctor card 1 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card doc-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="card-img-top" alt="Dr A">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Dr. Maya R.</h5>
+            <p class="muted small mb-2">Cardiologist · 15 yrs experience</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doctorModal" data-name="Dr. Maya R." data-specialty="Cardiology">Profile</button>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" data-doctor="Dr. Maya R.">Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor card 2 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card doc-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="card-img-top" alt="Dr B">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Dr. Arun K.</h5>
+            <p class="muted small mb-2">Orthopaedic Surgeon · 12 yrs</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doctorModal" data-name="Dr. Arun K." data-specialty="Orthopaedics">Profile</button>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" data-doctor="Dr. Arun K.">Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor card 3 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card doc-card">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="card-img-top" alt="Dr C">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Dr. Priya S.</h5>
+            <p class="muted small mb-2">Neurologist · 9 yrs</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doctorModal" data-name="Dr. Priya S." data-specialty="Neurology">Profile</button>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" data-doctor="Dr. Priya S.">Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor card 4 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card doc-card">
+          <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="card-img-top" alt="Dr D">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Dr. Sameer P.</h5>
+            <p class="muted small mb-2">Oncologist · 11 yrs</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doctorModal" data-name="Dr. Sameer P." data-specialty="Oncology">Profile</button>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal" data-doctor="Dr. Sameer P.">Book</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h4 style="font-weight:700">Get in touch</h4>
+        <p class="muted">Questions? Emergencies? Use the quick contact form or call our 24/7 helpline.</p>
+
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i><strong>Helpline:</strong> +1 (555) 123-4567</li>
+          <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i><strong>Address:</strong> 12 Healthway Ave, Cityname</li>
+          <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><strong>Email:</strong> care@stellacare.example</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <form id="contactForm" class="card p-3" style="border-radius:12px">
+          <div class="mb-3">
+            <label class="form-label">Full name</label>
+            <input class="form-control" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" type="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="3" name="message" required></textarea>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-5 border-top">
+  <div class="container">
+    <div class="row py-4">
+      <div class="col-md-6">
+        <div style="font-weight:700">StellaCare Hospital</div>
+        <small class="muted">© <span id="year"></span> StellaCare — All rights reserved</small>
+      </div>
+      <div class="col-md-6 text-md-end muted">
+        <small>Privacy · Terms · Accessibility</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CONTACT BUTTON -->
+<a href="#contact" class="btn btn-primary fab"><i class="bi bi-chat-dots-fill"></i></a>
+
+<!-- APPOINTMENT MODAL -->
+<div class="modal fade" id="appointmentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;overflow:hidden">
+      <div class="modal-header">
+        <h5 class="modal-title">Book an Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form id="appointmentForm" class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Patient name</label>
+          <input class="form-control" name="patient" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Choose department</label>
+          <select class="form-select" name="department" required>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Orthopaedics">Orthopaedics</option>
+            <option value="Oncology">Oncology</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Select doctor (optional)</label>
+          <input class="form-control" name="doctor">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Preferred date</label>
+          <input class="form-control" type="date" name="date" required>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-primary" type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTOR PROFILE MODAL -->
+<div class="modal fade" id="doctorModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:12px;">
+      <div class="modal-header">
+        <h5 class="modal-title doctor-name">Doctor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="muted doctor-specialty">Specialty</p>
+        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, similique.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // YEAR
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // COUNTER animation
+  document.querySelectorAll('.counter').forEach(el=>{
+    const target = +el.getAttribute('data-target');
+    let current = 0;
+    const step = Math.ceil(target / 120);
+    const id = setInterval(()=>{
+      current += step;
+      if(current >= target){
+        el.textContent = target.toLocaleString();
+        clearInterval(id);
+      } else el.textContent = current.toLocaleString();
+    },12);
+  });
+
+  // Doctor modal population
+  const doctorModal = document.getElementById('doctorModal');
+  doctorModal && doctorModal.addEventListener('show.bs.modal', function(e){
+    const btn = e.relatedTarget;
+    const name = btn.getAttribute('data-name') || 'Doctor';
+    const specialty = btn.getAttribute('data-specialty') || '';
+    doctorModal.querySelector('.doctor-name').textContent = name;
+    doctorModal.querySelector('.doctor-specialty').textContent = specialty;
+  });
+
+  // Appointment form: simple local validation & success UI
+  document.getElementById('appointmentForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    // Basic validation example
+    if(!data.get('patient') || !data.get('date') || !data.get('department')){
+      alert('Please fill required fields');
+      return;
+    }
+    // Mock submit -> show success and close
+    alert('Appointment requested — we will confirm shortly.');
+    const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
+    modal.hide();
+    form.reset();
+  });
+
+  // Contact form (mock)
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Thanks — we received your message.');
+    e.target.reset();
+  });
+
+  // Enhance: prefill doctor in appointment modal when 'Book' clicked on card
+  document.querySelectorAll('[data-doctor]').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      const name = this.getAttribute('data-doctor');
+      const modalEl = document.getElementById('appointmentModal');
+      modalEl.addEventListener('shown.bs.modal', function handler(){
+        const input = modalEl.querySelector('[name="doctor"]');
+        input.value = name || '';
+        modalEl.removeEventListener('shown.bs.modal', handler);
+      });
+    });
+  });
+
+</script>
+</body>
+</html>
